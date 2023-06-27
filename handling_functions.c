@@ -23,7 +23,7 @@ int handling_functions(const char *form, int *p, va_list lst,
 		{0, NULL}
 	};
 	for (b = 0; str_arr[b].form != '\0'; b++)
-		if (spec[*p] == str_arr[b].form)
+		if (form[*p] == str_arr[b].form)
 			return (str_arr[b].func(lst, buffer_arr, flags, width, precision, size));
 
 	if (str_arr[b].form == '\0')

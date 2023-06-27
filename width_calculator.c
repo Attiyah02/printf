@@ -31,7 +31,7 @@ int width_calculator(const char *format_str, int *p, va_list lst)
 			break;
 	}
 
-	*i = pres_int - 1;
+	*p = pres_int - 1;
 
 	return (width);
 }
