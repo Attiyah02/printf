@@ -7,12 +7,24 @@
 #define BUFF_SIZE 1024
 
 /**
- * typedef struct fmt fmt_t - struct operand
- * @spec: format
- * @fmt_t: function
+ * struct form- new struct
+ * @form: format of struct
+ * @func: function.
  */
 
-typedef struct spec fmt_t;
+struct form
+{
+	char form;
+	int (*func)(va_list, char[], int, int, int, int);
+};
+
+/**
+ * typedef struct fnct - struct operator
+ * @form: format
+ * @fnct: function
+ */
+
+typedef struct form fnct;
 
 /*prototype*/
 int d_conversion(va_list arg_types, char buffer_arr[],
