@@ -14,25 +14,25 @@ int _printf(const char *str_first, ...)
 	int c, p_char = 0, str = 0;
 	int flags, width, precision, size, int_buffer = 0;
 	va_list lst;
-	char buffer[BUFF_SIZE];
+	char buffer_arr[BUFF_SIZE];
 
 	if (str_first == NULL)
 		return (-1);
 
 	va_start(lst, str_first);
 
-	for (c = 0; str_first && str_first[i] != '\0'; c++)
+	for (c = 0; str_first && str_first[c] != '\0'; c++)
 	{
 		if (str_first[c] != '%')
 		{
 			buffer_arr[int_buffer++] = str_first[c];
 			if (int_buffer == BUFF_SIZE)
-				_buffer(buffer, &int_buffer);
+				_buffer(buffer_arr, &int_buffer);
 			p_char++;
 		}
 		else
 		{
-			_buffer(buffer, &int_buffer);
+			_buffer(buffer_arr, &int_buffer);
 			flags = _flags(str_first, &c);
 			width = width_calculator(str_first, &c, lst);
 			precision = _precision(str_first, &c, lst);
