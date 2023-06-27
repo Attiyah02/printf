@@ -26,13 +26,18 @@ struct form
 
 typedef struct form fnct;
 
-/*prototype*/
+/*prototype for functions*/
 int d_conversion(va_list arg_types, char buffer_arr[],
 		int flags, int width, int precision, int size);
+
+/*prototype for flags*/
+int width_calculator(const char *format_str, int *p, va_list lst);
 
 /*width handler*/
 int write_number(int is_neg, int w, char buffer_arr[],
 		int flags, int width, int precision, int size);
+
+int is_digit(char);
 
 long int size_number_conversion(long int num, int size);
 
