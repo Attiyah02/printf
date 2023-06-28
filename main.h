@@ -6,6 +6,7 @@
 #include <unistd.h>
 
 #define BUFF_SIZE 1024
+#define UNUSED(x) (void)(x)
 
 #define F_MINUS 1
 #define F_PLUS 2
@@ -53,6 +54,9 @@ int _size(const char *form, int *p);
 /*width handler*/
 int write_number(int is_neg, int w, char buffer_arr[],
 		int flags, int width, int precision, int size);
+int write_num(int w, char buffer_arr[],
+	int flags, int width, int precision,
+	int length, char padd, char ex_char);
 
 int is_digit(char);
 
