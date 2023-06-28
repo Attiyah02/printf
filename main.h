@@ -44,5 +44,10 @@ int write_number(int is_neg, int w, char buffer_arr[],
 int is_digit(char);
 
 long int size_number_conversion(long int num, int size);
+void print_binary(int num, ...);
+int _printf(const char *format, ...);
+void _custom_printf(const char *format, ...);
+void _custom_flags(const char * format, ...);
+
 
 #endif
