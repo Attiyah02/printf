@@ -8,7 +8,7 @@
  * Return: flags
  */
 
-int flags_active(const char *form, int *p)
+int _flags_active(const char *form, int *p)
 {
 	int j, current_int;
 	int flags = 0;

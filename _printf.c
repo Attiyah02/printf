@@ -33,12 +33,12 @@ int _printf(const char *str_first, ...)
 		else
 		{
 			_buffer(buffer_arr, &int_buffer);
-			flags = _flags(str_first, &c);
+			flags = _flags_active(str_first, &c);
 			width = width_calculator(str_first, &c, lst);
-			precision = _precision(str_first, &c, lst);
+			precision = precision_calc(str_first, &c, lst);
 			size = _size(str_first, &c);
 			++c;
-			str = handle_functions(str_first, &c, lst, buffer_arr,
+			str = handling_functions(str_first, &c, lst, buffer_arr,
 				flags, width, precision, size);
 			if (str == -1)
 				return (-1);

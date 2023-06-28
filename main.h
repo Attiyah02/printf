@@ -3,8 +3,18 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <unistd.h>
 
 #define BUFF_SIZE 1024
+
+#define F_MINUS 1
+#define F_PLUS 2
+#define F_ZERO 4
+#define F_HASH 8
+#define F_SPACE 16
+
+#define S_LONG 2
+#define S_SHORT 1
 
 /**
  * struct form- new struct
@@ -27,8 +37,8 @@ struct form
 typedef struct form fnct;
 
 int _printf(const char *str_first, ...);
-int handling_functions(const char *form, int *p, va_list lst, char buffer_arr[],
-	int width, int size, int precision, int flags)
+int handling_functions(const char *form, int *p, va_list lst, char
+		buffer_arr[], int width, int size, int precision, int flags);
 
 /*prototype for functions*/
 int d_conversion(va_list arg_types, char buffer_arr[],
@@ -36,6 +46,9 @@ int d_conversion(va_list arg_types, char buffer_arr[],
 
 /*prototype for flags*/
 int width_calculator(const char *format_str, int *p, va_list lst);
+int _flags_active(const char *form, int *p);
+int precision_calc(const char *form, int *p, va_list lst);
+int _size(const char *form, int *p);
 
 /*width handler*/
 int write_number(int is_neg, int w, char buffer_arr[],
