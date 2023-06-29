@@ -30,7 +30,7 @@ struct form
 };
 
 /**
- * typedef struct fnct - struct operator
+ * typedef struct fnc fnct - struct operator
  * @form: format
  * @fnct: function
  */
@@ -38,8 +38,8 @@ struct form
 typedef struct form fnct;
 
 int _printf(const char *str_first, ...);
-int handling_functions(const char *form, int *p, va_list lst, char
-		buffer_arr[], int width, int size, int precision, int flags);
+int handling_functions(const char *form, int *p, va_list lst, char buffer_arr[],
+	int width, int size, int precision, int flags);
 
 /*prototype for functions*/
 int d_conversion(va_list arg_types, char buffer_arr[],

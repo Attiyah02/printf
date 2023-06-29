@@ -2,8 +2,8 @@
 
 /**
  * flags_active - calculates active flags
- *@form: string to print the arguments
- *@p: takes parameter
+ * @form: string to print the arguments
+ * @p: takes parameter
  *
  * Return: flags
  */

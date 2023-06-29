@@ -18,10 +18,9 @@ int handling_functions(const char *form, int *p, va_list lst,
 		char buffer_arr[], int width, int size, int precision, int flags)
 {
 	int b, un = 0, p_char = -1;
-	fnct str_arr[] = {
-		{'d', d_conversion}, {'i', d_conversion},
-		{0, NULL}
-	};
+	fnct str_arr[] = {{'d', d_conversion}, {'i', d_conversion},
+		{0, NULL}};
+
 	for (b = 0; str_arr[b].form != '\0'; b++)
 		if (form[*p] == str_arr[b].form)
 			return (str_arr[b].func(lst, buffer_arr, flags, width, precision, size));
@@ -174,6 +173,8 @@ int write_num(int w, char buffer_arr[],
 		}
 	}
 	if (ex_char)
+	{
 		buffer_arr[--w] = ex_char;
+	}
 	return (write(1, &buffer_arr[w], length));
 }
