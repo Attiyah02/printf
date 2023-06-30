@@ -146,7 +146,8 @@ int write_num(int w, char buff_arr[], int flags, int width, int precision,
 		buff_arr[--w] = '0', length++;
 	if (ex_char != 0)
 		length++;
-	if (width > length){
+	if (width > length)
+	{
 		for (j = 1; j < width - length + 1; j++)
 			buff_arr[j] = padd;
 		buff_arr[j] = '\0';

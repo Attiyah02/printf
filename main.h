@@ -54,6 +54,8 @@ int precision_calc(const char *form, int *p, va_list lst);
 int _size(const char *form, int *p);
 
 /*width handler*/
+int write_char(char c, char buffer_arr[],
+	int flags, int width, int precision, int size);
 int write_number(int is_neg, int w, char buff_arr[],
 		int flags, int width, int precision, int size);
 int write_num(int w, char buff_arr[],
@@ -61,7 +63,10 @@ int write_num(int w, char buff_arr[],
 	int length, char padd, char ex_char);
 
 int is_digit(char);
+int does_it_print(char c);
+int append_hexa(char ascii_code, char buffer[], int a);
 
-long int size_number_conversion(long int num, int size);
+long int size_number_conversion(long int number, int size);
+long int convert_unsigned(unsigned long int number, int size);
 
 #endif

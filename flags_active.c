@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * flags_active - calculates active flags
+ * _flags_active - calculates active flags
  * @form: string to print the arguments
  * @p: takes parameter
  *

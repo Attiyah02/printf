@@ -43,24 +43,6 @@ int append_hexa(char ascii_code, char buffer[], int a)
 }
 
 /**
- * convert_size - turns size into number
- * @number: number being turned into size
- * @size: size being converted
- *
- * Return: value of number
- */
-
-long int convert_size(long int number, int size)
-{
-	if (size == S_LONG)
-		return (number);
-	else if (size == S_SHORT)
-		return ((short)number);
-
-	return ((int)number);
-}
-
-/**
  * convert_unsigned - turns size into number
  * @number: number being changed
  * @size: size being converted
