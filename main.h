@@ -66,16 +66,10 @@ int is_digit(char);
 int does_it_print(char c);
 int append_hexa(char ascii_code, char buffer[], int a);
 
-<<<<<<< HEAD
-
-long int convert_unsigned(unsigned long int number, int size);
-=======
 long int size_number_conversion(long int num, int size);
 int _printf(const char *format, ...);
 void _custom_printf(const char *format, ...);
 void _custom_flags(const char * format, ...);
 void print_binary(unsigned int num);
-
->>>>>>> 9e8b113c5bf404d36794d706d8471325b3cbc438
 
 #endif
