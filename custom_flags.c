@@ -10,11 +10,11 @@ void custom_prinft(const char *format, ...)
 
 	while (*format)
 	{
-		format++;
 		int flag_plus = 0;
 		int flag_space = 0;
 		int flag_hash = 0;
 		int length_modifier = 0;
+		format++;
 
 		while (*format == '+' || *format == ' ' || *format == '#')
 		{
@@ -152,6 +152,7 @@ void custom_prinft(const char *format, ...)
 				{
 					num = va_arg(args, unsigned int);
 				}
+				printf("%X", num);
 				break;
 			}
 		}

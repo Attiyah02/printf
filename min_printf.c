@@ -17,19 +17,19 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	for (p = format; *p; p++)
+	for (p = format; *p; format++)
 	{
 		if (*p != '%')
 		{
 			putchar(*p);
 			continue;
 		}
-		switch (*p++)
+		switch (format++)
 		{
 			case'c':
 				ch = va_arg(ap, int);
 				putchar(ch);
-				*p++;
+				format++;
 				break;
 
 			case's':
@@ -40,7 +40,7 @@ int _printf(const char *format, ...)
 
 			case'%':
 				putchar('%');
-				*p++;
+				format++;
 				break;
 
 			default:

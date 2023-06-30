@@ -14,10 +14,10 @@ void custom_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			format++;
 			int flag_plus = 0;
 			int flag_space = 0;
 			int flag_hash = 0;
+			format++;
 
 			while (*format == '+' || *format == ' ' || *format == '#')
 			{
