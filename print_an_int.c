@@ -30,15 +30,16 @@ int d_conversion(va_list arg_types, char buff_arr[],
 
 	if (l < 0)
 	{
-		number = (unsigned long int)(-1);
+		number = (unsigned long int)((-1) * l);
 		is_neg = 1;
 	}
 
-	do {
-		buff_arr[w++] = (number % 10) + '0';
+	while (number > 0)
+	{
+		buff_arr[w--] = (number % 10) + '0';
 		number /= 10;
-	} while (number > 0);
-	w--;
+	}
+	w++;
 
 	return (write_number(is_neg, w, buff_arr, flags, width, precision, size));
 }
