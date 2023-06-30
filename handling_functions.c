@@ -5,7 +5,7 @@
  * @form: string being printed
  * @p: pointer of var
  * @lst: argument lst
- * @buffer_arr: array container
+ * @buff_arr: array container
  * @flags: flags active
  * @width: width length
  * @precision: precision
@@ -15,15 +15,18 @@
  */
 
 int handling_functions(const char *form, int *p, va_list lst,
-		char buffer_arr[], int width, int size, int precision, int flags)
+		char buff_arr[], int width, int size, int precision, int flags)
 {
 	int b, un = 0, p_char = -1;
-	fnct str_arr[] = {{'d', d_conversion}, {'i', d_conversion},
-		{0, NULL}};
+	fnct str_arr[] = {
+		{'d', d_conversion}, {'i', d_conversion},
+		{'%', converts_perc},
+		{0, NULL}
+	};
 
 	for (b = 0; str_arr[b].form != '\0'; b++)
 		if (form[*p] == str_arr[b].form)
-			return (str_arr[b].func(lst, buffer_arr, flags, width, precision, size));
+			return (str_arr[b].func(lst, buff_arr, flags, width, precision, size));
 
 	if (str_arr[b].form == '\0')
 	{
@@ -85,7 +88,7 @@ long int size_number_conversion(long int num, int size)
  * write_number - prints a string
  * @is_neg: list of arguments
  * @w: char .
- * @buffer_arr: buffer that handles prints
+ * @buff_arr: buffer that handles prints
  * @flags:calculates flags
  * @width: width length
  * @precision: precision specifier
@@ -94,7 +97,7 @@ long int size_number_conversion(long int num, int size)
  * Return: a strin.
  */
 
-int write_number(int is_neg, int w, char buffer_arr[],
+int write_number(int is_neg, int w, char buff_arr[],
 	int flags, int width, int precision, int size)
 {
 	int length = BUFF_SIZE - w - 1;
@@ -111,14 +114,14 @@ int write_number(int is_neg, int w, char buffer_arr[],
 	else if (flags & F_SPACE)
 		ex_char = ' ';
 
-	return (write_num(w, buffer_arr, flags, width, precision,
+	return (write_num(w, buff_arr, flags, width, precision,
 		length, padd, ex_char));
 }
 
 /**
  * write_num - writesnumber using bufffer
  * @w:l start of buffer
- * @buffer_arr: array of char
+ * @buff_arr: array of char
  * @flags: flags
  * @width: width
  * @precision: precision specifier
@@ -128,53 +131,47 @@ int write_number(int is_neg, int w, char buffer_arr[],
  *
  * Return: no. of chars
  */
-
-int write_num(int w, char buffer_arr[],
-	int flags, int width, int precision,
+int write_num(int w, char buff_arr[], int flags, int width, int precision,
 	int length, char padd, char ex_char)
 {
 	int j, padd_start = 1;
 
-	if (precision == 0 && w == BUFF_SIZE - 2 &&
-			buffer_arr[w] == '0' && width == 0)
+	if (precision == 0 && w == BUFF_SIZE - 2 && buff_arr[w] == '0' && width == 0)
 		return (0);
-	if (precision == 0 && w == BUFF_SIZE - 2 && buffer_arr[w] == '0')
-		buffer_arr[w] = padd = ' ';
+	if (precision == 0 && w == BUFF_SIZE - 2 && buff_arr[w] == '0')
+		buff_arr[w] = padd = ' ';
 	if (precision > 0 && precision < length)
 		padd = ' ';
 	while (precision > length)
-		buffer_arr[--w] = '0', length++;
+		buff_arr[--w] = '0', length++;
 	if (ex_char != 0)
 		length++;
-	if (width > length)
-	{
+	if (width > length){
 		for (j = 1; j < width - length + 1; j++)
-			buffer_arr[j] = padd;
-		buffer_arr[j] = '\0';
+			buff_arr[j] = padd;
+		buff_arr[j] = '\0';
 		if (flags & F_MINUS && padd == ' ')
 		{
 			if (ex_char)
-				buffer_arr[--w] = ex_char;
-			return (write(1, &buffer_arr[w], length) + write(1, &buffer_arr[1], j - 1));
+				buff_arr[--w] = ex_char;
+			return (write(1, &buff_arr[w], length) + write(1, &buff_arr[1], j - 1));
 		}
 		else if (!(flags & F_MINUS) && padd == ' ')
 		{
 			if (ex_char)
-				buffer_arr[--w] = ex_char;
-			return (write(1, &buffer_arr[1],
-						j - 1) + write(1, &buffer_arr[w], length));
+				buff_arr[--w] = ex_char;
+			return (write(1, &buff_arr[1], j - 1) + write(1,
+						&buff_arr[w], length));
 		}
 		else if (!(flags & F_MINUS) && padd == '0')
 		{
 			if (ex_char)
-				buffer_arr[--padd_start] = ex_char;
-			return (write(1, &buffer_arr[padd_start], j - padd_start) +
-				write(1, &buffer_arr[w], length - (1 - padd_start)));
+				buff_arr[--padd_start] = ex_char;
+			return (write(1, &buff_arr[padd_start], j - padd_start) +
+				write(1, &buff_arr[w], length - (1 - padd_start)));
 		}
 	}
 	if (ex_char)
-	{
-		buffer_arr[--w] = ex_char;
-	}
-	return (write(1, &buffer_arr[w], length));
+		buff_arr[--w] = ex_char;
+	return (write(1, &buff_arr[w], length));
 }

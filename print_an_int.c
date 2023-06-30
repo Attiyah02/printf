@@ -3,7 +3,7 @@
 /**
  * d_conversion - prints an integer
  * @arg_types: list of arguments
- * @buffer_arr: buffer array that handles print
+ * @buff_arr: buffer array that handles print
  * @flags:flags active
  * @width: width length
  * @precision: precision specifier
@@ -12,7 +12,7 @@
  * Return:an integer
  */
 
-int d_conversion(va_list arg_types, char buffer_arr[],
+int d_conversion(va_list arg_types, char buff_arr[],
 		int flags, int width, int precision, int size)
 {
 	int w = BUFF_SIZE - 2;
@@ -23,9 +23,9 @@ int d_conversion(va_list arg_types, char buffer_arr[],
 	l = size_number_conversion(l, size);
 
 	if (l == 0)
-		buffer_arr[w--] = '0';
+		buff_arr[w--] = '0';
 
-	buffer_arr[BUFF_SIZE - 1] = '\0';
+	buff_arr[BUFF_SIZE - 1] = '\0';
 	number = (unsigned long int)l;
 
 	if (l < 0)
@@ -35,10 +35,10 @@ int d_conversion(va_list arg_types, char buffer_arr[],
 	}
 
 	do {
-		buffer_arr[w++] = (number % 10) + '0';
+		buff_arr[w++] = (number % 10) + '0';
 		number /= 10;
 	} while (number > 0);
 	w--;
 
-	return (write_number(is_neg, w, buffer_arr, flags, width, precision, size));
+	return (write_number(is_neg, w, buff_arr, flags, width, precision, size));
 }

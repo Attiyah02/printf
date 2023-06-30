@@ -38,12 +38,14 @@ struct form
 typedef struct form fnct;
 
 int _printf(const char *str_first, ...);
-int handling_functions(const char *form, int *p, va_list lst, char buffer_arr[],
+int handling_functions(const char *form, int *p, va_list lst, char buff_arr[],
 	int width, int size, int precision, int flags);
 
 /*prototype for functions*/
-int d_conversion(va_list arg_types, char buffer_arr[],
+int d_conversion(va_list arg_types, char buff_arr[],
 		int flags, int width, int precision, int size);
+int converts_perc(va_list lst, char buff_arr[],
+		 int flags, int width, int precision, int size);
 
 /*prototype for flags*/
 int width_calculator(const char *format_str, int *p, va_list lst);
@@ -52,9 +54,9 @@ int precision_calc(const char *form, int *p, va_list lst);
 int _size(const char *form, int *p);
 
 /*width handler*/
-int write_number(int is_neg, int w, char buffer_arr[],
+int write_number(int is_neg, int w, char buff_arr[],
 		int flags, int width, int precision, int size);
-int write_num(int w, char buffer_arr[],
+int write_num(int w, char buff_arr[],
 	int flags, int width, int precision,
 	int length, char padd, char ex_char);
 
