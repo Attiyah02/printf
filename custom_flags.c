@@ -1,11 +1,8 @@
 #include "main.h"
 
-
-
 void custom_prinft(const char *format, ...)
 {
 	va_list args;
-
 	va_start(args, format);
 
 	while (*format)
@@ -32,7 +29,6 @@ void custom_prinft(const char *format, ...)
 			}
 			format++;
 		}
-
 		if (*format == 'l')
 		{
 			length_modifier = 1;
@@ -43,7 +39,6 @@ void custom_prinft(const char *format, ...)
 			length_modifier = -1;
 			format++;
 		}
-
 		switch (*format)
 		{
 			case 'd':

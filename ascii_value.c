@@ -35,9 +35,10 @@ int append_hexa(char ascii_code, char buffer[], int a)
 		ascii_code = -ascii_code;
 
 	buffer[a] = '\\';
-	buffer[a + 1] = 'x';
-	buffer[a + 2] = represents_ascii[ascii_code / 16];
-	buffer[a + 3] = represents_ascii[ascii_code % 16];
+	buffer[a++] = 'x';
+
+	buffer[a++] = represents_ascii[ascii_code / 16];
+	buffer[a] = represents_ascii[ascii_code % 16];
 
 	return (3);
 }

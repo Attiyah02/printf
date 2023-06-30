@@ -1,9 +1,10 @@
 #include "main.h"
 
-/*
+/**
  * print_binary - print binary numbers
- * _custom_printf - printf function to help print binary numbers
  * @num: number to be converted to binaru number
+ *
+ * Return- binary
  */
 
 void print_binary(unsigned int num)
@@ -14,6 +15,13 @@ void print_binary(unsigned int num)
 	}
 	printf("%d", num % 2);
 }
+
+/**
+ * _custom_printf - printf function to help print binary numbers
+ * @format: format
+ *
+ * Return: prints binary
+ */
 
 void _custom_printf(const char *format, ...)
 {

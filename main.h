@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
-#include <unistd.h>
 
 #define BUFF_SIZE 1024
 #define UNUSED(x) (void)(x)
@@ -37,7 +36,6 @@ struct form
 
 typedef struct form fnct;
 
-int _printf(const char *str_first, ...);
 int handling_functions(const char *form, int *p, va_list lst, char buff_arr[],
 	int width, int size, int precision, int flags);
 
@@ -66,10 +64,11 @@ int is_digit(char);
 int does_it_print(char c);
 int append_hexa(char ascii_code, char buffer[], int a);
 
-long int size_number_conversion(long int num, int size);
 int _printf(const char *format, ...);
+long int convert_unsigned(unsigned long int number, int size);
+long int size_number_conversion(long int num, int size);
 void _custom_printf(const char *format, ...);
-void _custom_flags(const char * format, ...);
+void _custom_flags(const char *format, ...);
 void print_binary(unsigned int num);
 
 #endif
