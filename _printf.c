@@ -4,51 +4,51 @@ void _buffer(char buff_arr[], int *int_buffer);
 
 /**
  * _printf-print as the printf lib
- * @format: format
+ * @str_first: format
  *
- * Return:arguments
+ * Return - arguements
  */
 
-int _printf(const char *format, ...)
+int _printf(const char *str_first, ...)
 {
-	va_list ap;
-	const char *p;
-	int c, p_char = 0, str_len = 0;
+	int c, p_char = 0, str = 0;
 	int flags, width, precision, size, int_buffer = 0;
+	va_list lst;
 	char buff_arr[BUFF_SIZE];
 
-	va_start(ap, format);
+	if (str_first == NULL)
+		return (-1);
 
-	for (p = format; *p; p++)
+	va_start(lst, str_first);
+
+	for (c = 0; str_first && str_first[c] != '\0'; c++)
 	{
-		if (*p != '%')
+		if (str_first[c] != '%')
 		{
-			buff_arr[int_buffer++] = *p;
+			buff_arr[int_buffer++] = str_first[c];
 			if (int_buffer == BUFF_SIZE)
-			{
 				_buffer(buff_arr, &int_buffer);
-			}
 			p_char++;
 		}
 		else
 		{
 			_buffer(buff_arr, &int_buffer);
-			flags = _flags_active(format, &c);
-			width = width_calculator(format, &c, ap);
-			precision = precision_calc(format, &c, ap);
-			size = _size(format, &c);
+			flags = _flags_active(str_first, &c);
+			width = width_calculator(str_first, &c, lst);
+			precision = precision_calc(str_first, &c, lst);
+			size = _size(str_first, &c);
 			++c;
-			str_len = handling_functions(format, &c, ap, buff_arr,
-					flags, width, precision, size);
-			if (str_len == -1)
-			{
+			str = handling_functions(str_first, &c, lst, buff_arr,
+				flags, width, precision, size);
+			if (str == -1)
 				return (-1);
-			}
-			p_char += str_len;
+			p_char += str;
 		}
 	}
+
 	_buffer(buff_arr, &int_buffer);
-	va_end(ap);
+
+	va_end(lst);
 
 	return (p_char);
 }
