@@ -21,6 +21,10 @@ int handling_functions(const char *form, int *p, va_list lst,
 	fnct str_arr[] = {
 		{'d', d_conversion}, {'i', d_conversion},
 		{'%', converts_perc},
+		{'S', conversion_S},
+		{'p', p_conversion},
+		{'r', r_conversion},
+		{'R', conversion_R},
 		{0, NULL}
 	};
 

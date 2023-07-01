@@ -24,7 +24,6 @@ int converts_perc(va_list lst, char buff_arr[],
 	return (write(1, "%%", 1));
 }
 
-#include "main.h"
 /**
  * write_char - prints a string
  * @c: char types.

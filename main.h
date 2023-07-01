@@ -44,6 +44,14 @@ int d_conversion(va_list arg_types, char buff_arr[],
 		int flags, int width, int precision, int size);
 int converts_perc(va_list lst, char buff_arr[],
 		 int flags, int width, int precision, int size);
+int conversion_S(va_list arg_types, char buff_arr[],
+	int flags, int width, int precision, int size);
+int p_conversion(va_list arg_types, char buffer_arr[], int flags,
+		int width, int precision, int size);
+int r_conversion(va_list arg_types, char buffer_arr[], int flags,
+		int width, int precision, int size);
+int conversion_R(va_list arg_types, char buffer_arr[],
+	int flags, int width, int precision, int size);
 
 /*prototype for flags*/
 int width_calculator(const char *format_str, int *p, va_list lst);
@@ -59,9 +67,11 @@ int write_number(int is_neg, int w, char buff_arr[],
 int write_num(int w, char buff_arr[],
 	int flags, int width, int precision,
 	int length, char padd, char ex_char);
+int write_point(char buff_arr[], int lp, int len,
+	int width, int flags, char padd, char ex_char, int padd_start);
 
 int is_digit(char);
-int does_it_print(char c);
+int does_it_print(char k);
 int append_hexa(char ascii_code, char buffer[], int a);
 
 int _printf(const char *format, ...);
